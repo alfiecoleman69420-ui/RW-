@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RW£ — Quality Products at Prices You'll Love</title>
+  <meta name="description" content="RW£ — Minimal, fast, and straight to the point. Explore products, read reviews, and learn about us." />
+  <style>
+    :root{
+      --bg:#0a0a0a;    /* near-black */
+      --panel:#111;    /* elevated cards */
+      --text:#f2f2f2;  /* primary text */
+      --muted:#bdbdbd; /* secondary text */
+      --accent:#ffffff;/* subtle accent (white) */
+      --ring:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+
+    /* Layout */
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.2) blur(6px); background:rgba(10,10,10,.6); border-bottom:1px solid var(--ring)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px; letter-spacing:.4px}
+    .logo{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#fff, #999); display:grid; place-items:center; color:#000; font-weight:800}
+    .brand h1{font-size:18px; margin:0}
+    .links{display:flex; gap:8px; flex-wrap:wrap}
+    .btn{appearance:none; border:1px solid var(--ring); background:transparent; color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; transition:transform .18s ease, border-color .18s ease, background-color .18s ease; font-weight:600}
+    .btn[aria-current="page"]{background:#151515; border-color:#2a2a2a}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+
+    /* Hero */
+    .hero{display:grid; gap:18px; padding:40px 0}
+    .hero h2{font-size:42px; line-height:1.1; margin:0}
+    .hero p{color:var(--muted); margin:0}
+    .cta{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Pages */
+    main{min-height:60vh}
+    .page{display:none; animation:fade .35s ease both}
+    .page.active{display:block}
+
+    /* Cards / Grids */
+    .grid{display:grid; gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+    .card{background:var(--panel); border:1px solid var(--ring); border-radius:16px; padding:16px; position:relative; overflow:hidden}
+    .card:hover{border-color:#2a2a2a}
+    .card h3{margin:0 0 6px}
+    .price{font-weight:800}
+    .muted{color:var(--muted)}
+
+    /* Review item */
+    .review{display:flex; align-items:flex-start; gap:14px}
+    .review img{width:56px; height:56px; border-radius:12px; object-fit:cover; border:1px solid var(--ring)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--ring); color:var(--muted)}
+
+    /* Animations */
+    @keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+    .soft-in{opacity:0; transform:translateY(8px); animation:fade .45s .05s ease forwards}
+
+    /* Links */
+    a{color:inherit; text-decoration:none; border-bottom:1px dashed #2a2a2a; transition:border-color .2s}
+    a:hover{border-color:#4a4a4a}
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion:reduce){
+      .btn, .page{animation:none}
+      .btn:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">£</div>
+        <h1>RW£</h1>
+      </div>
+      <nav class="links" aria-label="Primary">
+        <button class="btn" data-route="home" aria-current="page">Home</button>
+        <button class="btn" data-route="products">Products</button>
+        <button class="btn" data-route="reviews">Reviews</button>
+        <button class="btn" data-route="about">About</button>
+        <a class="btn" href="mailto:orders@yourdomain.com?subject=RW£%20Enquiry">Email Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HOME / LANDING -->
+    <section id="page-home" class="page active" role="region" aria-labelledby="home-title">
+      <div class="hero soft-in">
+        <h2 id="home-title">Quality Products. Lower Prices. Zero Hassle.</h2>
+        <p>Minimal design, maximum value. Browse our products, read what real buyers say, and email us to order—fast, clear, and secure.</p>
+        <div class="cta">
+          <button class="btn" data-route="products">View Products</button>
+          <button class="btn" data-route="reviews">See Reviews</button>
+        </div>
+      </div>
+
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>Transparent Pricing</h3>
+          <p class="muted">No add‑ons. What you see is what you pay.</p>
+        </article>
+        <article class="card">
+          <h3>Fast Email Orders</h3>
+          <p class="muted">Order in one message. We’ll confirm and handle the rest.</p>
+        </article>
+        <article class="card">
+          <h3>Trusted by Buyers</h3>
+          <p class="muted">Scroll our proofs & reviews—photo receipts + customer notes.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRODUCTS PAGE -->
+    <section id="page-products" class="page" role="region" aria-labelledby="products-title">
+      <h2 id="products-title" class="soft-in">Products</h2>
+      <p class="muted">A small selection below. Email for current availability and bulk pricing.</p>
+
+      <div class="grid cols-3" style="margin-top:12px">
+        <!-- Product Card -->
+        <article class="card">
+          <h3>Product Name A</h3>
+          <p class="muted">Short one‑line description.</p>
+          <p class="price">£20</p>
+          <a class="btn" href="mailto:orders@yourdomain.com?subject=Order%20Enquiry%20-%20Product%20A">Enquire</a>
+        </article>
+        <article class="card">
+          <h3>Product Name B</h3>
+          <p class="muted">Short one‑line description.</p>
+          <p class="price">£35</p>
+          <a class="btn" href="mailto:orders@yourdomain.com?subject=Order%20Enquiry%20-%20Product%20B">Enquire</a>
+        </article>
+        <article class="card">
+          <h3>Product Name C</h3>
+          <p class="muted">Short one‑line description.</p>
+          <p class="price">£50</p>
+          <a class="btn" href="mailto:orders@yourdomain.com?subject=Order%20Enquiry%20-%20Product%20C">Enquire</a>
+        </article>
+      </div>
+
+      <p style="margin-top:18px" class="muted">Want something specific? <a href="mailto:orders@yourdomain.com?subject=RW£%20Special%20Request">Email us</a> with a link or description.</p>
+    </section>
+
+    <!-- REVIEWS PAGE -->
+    <section id="page-reviews" class="page" role="region" aria-labelledby="reviews-title">
+      <h2 id="reviews-title" class="soft-in">Vouches & Reviews</h2>
+      <div class="grid" style="margin-top:12px">
+        <article class="card review">
+          <img src="review1.jpg" alt="Customer proof 1" />
+          <div>
+            <h3>Alex</h3>
+            <p class="muted">“Arrived fast and exactly as shown. Great price.”</p>
+          </div>
+        </article>
+        <article class="card review">
+          <img src="review2.jpg" alt="Customer proof 2" />
+          <div>
+            <h3>Sam</h3>
+            <p class="muted">“Reliable service. Will order again.”</p>
+          </div>
+        </article>
+        <article class="card review">
+          <img src="review3.jpg" alt="Customer proof 3" />
+          <div>
+            <h3>Jordan</h3>
+            <p class="muted">“Best price I found anywhere.”</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:18px" class="muted">Have feedback? Send your photo + note to <a href="mailto:orders@yourdomain.com?subject=RW£%20Review%20Submission">orders@yourdomain.com</a>.</p>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="page-about" class="page" role="region" aria-labelledby="about-title">
+      <h2 id="about-title" class="soft-in">About RW£</h2>
+      <div class="grid" style="margin-top:12px">
+        <article class="card">
+          <p>
+            RW£ is a straightforward way to get quality products for less. We keep the process minimal: clear pricing, quick responses, and email‑based ordering that puts you in control.
+          </p>
+          <p class="muted">
+            Browse the product list, email us your selection, and we’ll confirm availability, price, and delivery. No clutter—just value.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:12px; padding:22px 24px">
+      <small>© <span id="year"></span> RW£ — All rights reserved.</small>
+      <small><a href="mailto:orders@yourdomain.com?subject=RW£%20Enquiry">Email orders@yourdomain.com</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // Simple hash-less router for single-file "pages"
+    const routes = ["home","products","reviews","about"];
+    const buttons = document.querySelectorAll('[data-route]');
+
+    function show(route){
+      routes.forEach(r=>{
+        const el = document.getElementById(`page-${r}`);
+        if(!el) return;
+        if(r===route){ el.classList.add('active'); }
+        else{ el.classList.remove('active'); }
+      });
+      buttons.forEach(b=>{
+        b.setAttribute('aria-current', b.dataset.route===route ? 'page' : 'false');
+      });
+      // Scroll to top smoothly on page change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    buttons.forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.route)));
+
+    // Optional: allow deep link via hash (#products etc.)
+    const initial = location.hash?.replace('#','');
+    if(routes.includes(initial)) show(initial);
+
+    // Keep hash in sync for shareable URLs
+    function syncHash(route){ location.hash = route; }
+    buttons.forEach(btn=>btn.addEventListener('click',()=>syncHash(btn.dataset.route)));
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
